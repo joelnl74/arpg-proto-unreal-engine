@@ -13,6 +13,9 @@ class ARPG_PROTO_API AEnemyCharacter : public ABaseCharacter, public IEnemyInter
 {
 	GENERATED_BODY()
 	
+protected:
+	virtual void BeginPlay() override;
+
 public:
 	AEnemyCharacter();
 

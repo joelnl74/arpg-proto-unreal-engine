@@ -1,6 +1,9 @@
 #include "ARPG_PROTO/Character/PlayerCharacter.h"
+#include "ARPG_PROTO/Player/PlayerCharacterState.h"
 
+#include "AbilitySystemComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+
 
 APlayerCharacter::APlayerCharacter()
 {
@@ -12,4 +15,29 @@ APlayerCharacter::APlayerCharacter()
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationRoll = false;
 	bUseControllerRotationYaw = false;
+}
+
+void APlayerCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+
+	// Init ability actor info for the Server
+	InitAbilityActorInfo();
+}
+
+void APlayerCharacter::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+
+	// Init ability actor info for the Client
+	InitAbilityActorInfo();
+}
+
+void APlayerCharacter::InitAbilityActorInfo()
+{
+	APlayerCharacterState* playerCharacterState = GetPlayerState<APlayerCharacterState>();
+	check(playerCharacterState);
+	playerCharacterState->GetAbilitySystemComponent()->InitAbilityActorInfo(playerCharacterState, this);
+	abilitySystemComponent = playerCharacterState->GetAbilitySystemComponent();
+	attributeSet = playerCharacterState->GetAttributeSet();
 }

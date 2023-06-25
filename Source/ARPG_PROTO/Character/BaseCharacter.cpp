@@ -10,3 +10,8 @@ ABaseCharacter::ABaseCharacter()
 	weaponSlot->SetupAttachment(GetMesh(), FName("WeaponSocketSlot"));
 	weaponSlot->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
+
+UAbilitySystemComponent* ABaseCharacter::GetAbilitySystemComponent() const
+{
+	return abilitySystemComponent;
+}
