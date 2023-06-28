@@ -21,10 +21,12 @@ void APlayerCharacterController::BeginPlay()
 
 	check(inputMappingContext);
 
-	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-	check(Subsystem);
+	UEnhancedInputLocalPlayerSubsystem* subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
 
-	Subsystem->AddMappingContext(inputMappingContext, 0);
+	if (subsystem != nullptr)
+	{
+		subsystem->AddMappingContext(inputMappingContext, 0);
+	}
 
 	bShowMouseCursor = true;
 	DefaultMouseCursor = EMouseCursor::Default;
