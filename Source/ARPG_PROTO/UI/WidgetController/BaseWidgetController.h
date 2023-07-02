@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
+#include "AbilitySystemComponent.h"
 #include "BaseWidgetController.generated.h"
 
 class UAttributeSet;
@@ -38,8 +39,10 @@ class ARPG_PROTO_API UBaseWidgetController : public UObject
 public:
 	UFUNCTION(BlueprintCallable)
 	void SetWidgetControllerParams(const FWidgetControllerParams& WCParams);
+	virtual void BroadCastInitialValues();
+	virtual void BindCallbacksToDependencies();
 
-	protected:
+protected:
 	UPROPERTY(BlueprintReadOnly, Category="WidgetController")
 	TObjectPtr<APlayerController> playerController;
 

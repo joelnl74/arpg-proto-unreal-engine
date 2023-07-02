@@ -28,6 +28,8 @@ void AGameUIHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySy
 	UOverlayWidgetController* widgetController = GetOverlayWidgetController(widgetControllerParams);
 
 	overlayWidget->SetWidgetController(widgetController);
+	widgetController->BroadCastInitialValues();
+	widgetController->BindCallbacksToDependencies();
 
 	widget->AddToViewport();
 }

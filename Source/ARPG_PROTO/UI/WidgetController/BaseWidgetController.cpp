@@ -1,6 +1,3 @@
-
-
-
 #include "ARPG_PROTO/UI/WidgetController/BaseWidgetController.h"
 
 void UBaseWidgetController::SetWidgetControllerParams(const FWidgetControllerParams& WCParams)
@@ -10,3 +7,6 @@ void UBaseWidgetController::SetWidgetControllerParams(const FWidgetControllerPar
 	abilitySystemComponent = WCParams.abilitySystemComponent;
 	attributeSet = WCParams.attributeSet;
 }
+
+void UBaseWidgetController::BroadCastInitialValues() {}
+void UBaseWidgetController::BindCallbacksToDependencies() {}

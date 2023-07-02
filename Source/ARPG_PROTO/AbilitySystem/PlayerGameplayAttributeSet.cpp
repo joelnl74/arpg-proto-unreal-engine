@@ -3,7 +3,7 @@
 
 UPlayerGameplayAttributeSet::UPlayerGameplayAttributeSet()
 {
-	Inithealth(100.f);
+	Inithealth(50.f);
 	InitmaxHealth(100.f);
 	Initmana(50.f);
 	InitmaxMana(50.f);
@@ -32,7 +32,6 @@ void UPlayerGameplayAttributeSet::onRep_MaxHealth(const FGameplayAttributeData& 
 void UPlayerGameplayAttributeSet::onRep_Mana(const FGameplayAttributeData& oldMana)
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UPlayerGameplayAttributeSet, mana, oldMana);
-
 }
 
 void UPlayerGameplayAttributeSet::onRep_MaxMana(const FGameplayAttributeData& oldMaxMana)
