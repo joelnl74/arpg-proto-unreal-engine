@@ -28,6 +28,7 @@ void AARPGEffectActor::OnOverlap(UPrimitiveComponent* overlappedComponent, AActo
 
 		UPlayerGameplayAttributeSet* mutableAuraAttributeSet = const_cast<UPlayerGameplayAttributeSet*>(attributeSet);
 		mutableAuraAttributeSet->Sethealth(attributeSet->Gethealth() + 25.f);
+		mutableAuraAttributeSet->Setmana(attributeSet->Getmana() - 25.f);
 		Destroy();
 	}
 }
