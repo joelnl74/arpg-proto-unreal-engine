@@ -5,7 +5,7 @@ UPlayerGameplayAttributeSet::UPlayerGameplayAttributeSet()
 {
 	Inithealth(50.f);
 	InitmaxHealth(100.f);
-	Initmana(50.f);
+	Initmana(10.0f);
 	InitmaxMana(50.f);
 }
 
