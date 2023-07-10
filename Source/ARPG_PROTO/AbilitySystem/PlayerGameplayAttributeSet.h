@@ -23,6 +23,7 @@ public:
 	UPlayerGameplayAttributeSet();
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+	virtual void PreAttributeChange(const FGameplayAttribute& attribute, float& newValue) override;
 
 	UFUNCTION()
 	void onRep_Health(const FGameplayAttributeData &oldHealth);

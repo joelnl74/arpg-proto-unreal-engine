@@ -18,6 +18,20 @@ void UPlayerGameplayAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimePro
 	DOREPLIFETIME_CONDITION_NOTIFY(UPlayerGameplayAttributeSet, maxMana, COND_None, REPNOTIFY_Always);
 }
 
+void UPlayerGameplayAttributeSet::PreAttributeChange(const FGameplayAttribute& attribute, float& newValue)
+{
+	Super::PreAttributeChange(attribute, newValue);
+
+	if (attribute == GethealthAttribute())
+	{
+		newValue = FMath::Clamp(newValue, 0.f, GetmaxHealth());
+	}
+	if (attribute == GetmanaAttribute())
+	{
+		newValue = FMath::Clamp(newValue, 0.f, GetmaxMana());
+	}
+}
+
 void UPlayerGameplayAttributeSet::onRep_Health(const FGameplayAttributeData& oldHealth)
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UPlayerGameplayAttributeSet, health, oldHealth);
